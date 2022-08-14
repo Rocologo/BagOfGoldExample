@@ -1,0 +1,10 @@
+name: BagOfGold
+main: one.lindegaard.BagOfGoldExample
+version: ${version}
+description: BagOfGoldExample 
+dev-url: https://www.spigotmc.org/resources/bagofgold.49332/
+author: Rocologo
+depend: [BagOfGold]
+loadbefore: []
+softdepend: []
+api-version: 1.13
