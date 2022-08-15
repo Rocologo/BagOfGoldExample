@@ -1,7 +1,7 @@
-name: BagOfGold
-main: one.lindegaard.BagOfGoldExample
+name: BagOfGoldExample
+main: one.lindegaard.BagOfGoldExample.BagOfGoldExample
 version: ${version}
-description: BagOfGoldExample 
+description: Example plugin showing how to hook into the BagOfGold plugin. 
 dev-url: https://www.spigotmc.org/resources/bagofgold.49332/
 author: Rocologo
 depend: [BagOfGold]

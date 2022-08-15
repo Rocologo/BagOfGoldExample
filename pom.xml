@@ -3,31 +3,121 @@
 	<groupId>one.lindegaard</groupId>
 	<artifactId>BagOfGoldExample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<developers>
+		<developer>
+			<id>rocologo</id>
+			<name>Rocologo</name>
+			<email>rocologo@hotmail.com</email>
+			<url>http://github.com/rocologo</url>
+			<roles>
+				<role>developer</role>
+				<role>maintainer</role>
+			</roles>
+			<timezone>2</timezone>
+		</developer>
+	</developers>
+	<properties>
+		<build.number>TestBuild</build.number>
+		<mainClass>${project.groupId}.${project.artifactId}</mainClass>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<javaCompilerSource.version>17</javaCompilerSource.version>
+		<javaCompilerTarget.version>17</javaCompilerTarget.version>
+		<mavenCompilerPlugin.version>3.10.1</mavenCompilerPlugin.version>
+		<mavenJarPlugin.version>3.2.0</mavenJarPlugin.version>
+		<mavenShadePlugin.version>3.3.0</mavenShadePlugin.version>
+		<maven-deploy-plugin.version>3.0.0-M2</maven-deploy-plugin.version>
+		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+		<spring.version>5.1.5.RELEASE</spring.version>
+		<spigotmc_1_19_R1.version>1.19-R0.1-SNAPSHOT</spigotmc_1_19_R1.version>
+		<bagofgold.version>4.1.9-SNAPSHOT</bagofgold.version>
+	</properties>
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+		<sourceDirectory>${basedir}/src</sourceDirectory>
+		<defaultGoal>clean install</defaultGoal>
 		<resources>
 			<resource>
-				<directory>src</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
+				<targetPath>.</targetPath>
+				<filtering>true</filtering>
+				<directory>${basedir}/src/main/resources</directory>
+				<includes>
+					<include>plugin.yml</include>
+				</includes>
 			</resource>
 		</resources>
+		<directory>${basedir}/target</directory>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>${mavenCompilerPlugin.version}</version>
 				<configuration>
-					<release>17</release>
+					<source>${javaCompilerSource.version}</source>
+					<target>${javaCompilerTarget.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${maven-deploy-plugin.version}</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>${nexus-staging-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>default-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<serverId>nexus</serverId>
+					<nexusUrl>https://nexus.lindegaard.one/</nexusUrl>
+					<skipStaging>true</skipStaging>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>${mavenShadePlugin.version}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<createDependencyReducedPom>false</createDependencyReducedPom>
+					<createSourcesJar>false</createSourcesJar>
+					<artifactSet>
+						<includes>
+							<include>one.lindegaard:Core:*</include>
+						</includes>
+					</artifactSet>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
 		<dependency>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot-api</artifactId>
+			<version>${spigotmc_1_19_R1.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>one.lindegaard</groupId>
 			<artifactId>BagOfGold</artifactId>
-			<version>4.1.9-SNAPSHOT</version>
+			<version>${bagofgold.version}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<repositories>
