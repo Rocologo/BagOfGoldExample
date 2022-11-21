@@ -8,7 +8,7 @@
 			<id>rocologo</id>
 			<name>Rocologo</name>
 			<email>rocologo@hotmail.com</email>
-			<url>http://github.com/rocologo</url>
+			<url>https://github.com/rocologo</url>
 			<roles>
 				<role>developer</role>
 				<role>maintainer</role>
@@ -100,7 +100,7 @@
 					<createSourcesJar>false</createSourcesJar>
 					<artifactSet>
 						<includes>
-							<include>one.lindegaard:Core:*</include>
+<!--							<include>one.lindegaard:Core:*</include> -->
 						</includes>
 					</artifactSet>
 				</configuration>
