@@ -29,7 +29,7 @@
 		<maven-deploy-plugin.version>3.0.0-M2</maven-deploy-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 		<spring.version>5.1.5.RELEASE</spring.version>
-		<spigotmc_1_19_R1.version>1.19-R0.1-SNAPSHOT</spigotmc_1_19_R1.version>
+		<spigotmc_1_19_R3.version>1.19.4-R0.1-SNAPSHOT</spigotmc_1_19_R3.version>
 		<bagofgold.version>4.1.9-SNAPSHOT</bagofgold.version>
 	</properties>
 	<build>
@@ -111,7 +111,7 @@
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
-			<version>${spigotmc_1_19_R1.version}</version>
+			<version>${spigotmc_1_19_R3.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>one.lindegaard</groupId>
